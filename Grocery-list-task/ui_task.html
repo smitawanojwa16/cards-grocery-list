@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Assignment</title>
+        <style>
+            *{
+                padding:0;
+                margin:0;
+                box-sizing: border-box;
+            }
+            body{
+                font-family: Arial;
+            }
+            #createDiv{
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                padding: 0px 50px;
+            }
+            .container{
+                width: 22%;
+                margin-bottom: 50px
+            
+            }
+            .heading{
+                font-size: 36px;
+                margin-bottom: 5%;
+                padding: 0px 50px;
+            }
+            /* .row{
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                flex-flow: wrap;
+            } */
+            .card{
+                width: auto;
+                background:#FFF4D5 ;
+                border:1px solid #E17055;
+                transition: 0.3s;
+                box-shadow:3px 3px #E17055;
+                padding: 10px;
+                
+            }
+            .card-header{
+                text-align: justify;
+                padding: 50px 10px;
+                color: black;
+                font-size: 34px;
+            }
+            .card-body{
+                padding: 20px 20px;
+                text-align: center;
+                font-size: 15px;
+            }
+            .card-body p{
+                color: #E17055;
+                text-align: justify;
+                text-transform: uppercase;
+            }
+            .card:hover{
+                transform:scale(1.05);
+                box-shadow:0 0 40px -10px rgba(0,0,0,0.25)
+            }
+            .quantity{
+                font-size: 15px;
+                text-align: end;
+                color: #E17055;
+            }
+            hr.solid {
+                border-top: 2px solid #bbb;
+            }
+            .subContent{
+                font-size: 10px;
+                color: black;
+                margin-top: 9px;
+    
+            }
+            
+           
+
+            /* Responsive cards*/
+            @media only screen and (max-width: 1000px){
+                .card{
+                    width: 40%;
+                }
+            }
+            @media only screen and (max-width: 620px){
+                .container{
+                    width: 100%;
+                }
+                .heading{
+                    padding: 20px;
+                    font-size: 20px;
+                }
+                .card{
+                    width: 80%;
+                }
+            }
+        </style>
+    </head>
+<body>
+
+<div class="heading">
+    <p><b>Grocery List</b></p>
+</div>
+<div id="createDiv">
+  
+</div>
+
+<script>
+ 
+        var list =[
+        {
+        "category": "beverage",
+        "item": "Milk",
+        "brand": "Jabron",
+        "type": "Organic 2% Milk",
+        "qty": 1
+        },
+        {
+        "category": "pantry",
+        "item": "Farfalle",
+        "brand": "Micoy",
+        "type": "Pasta",
+        "qty": 3
+        },
+        {
+        "category": "pantry",
+        "item": "Linguini",
+        "brand": "Micoy",
+        "type": "Pasta",
+        "qty": 2
+        },
+        {
+        "category": "dairy",
+        "item": "Yogurt",
+        "brand": "Labels",
+        "type": "Plain Non-Fat Greek Yogurt",
+        "qty": 12
+        },
+        {
+        "category": "produce",
+        "item": "Apples",
+        "brand": "Zambony",
+        "type": "Honeycrisp",
+        "qty": 6
+        },
+        {
+        "category": "produce",
+        "item": "Lemons",
+        "brand": "KC",
+        "type": "Pink Variegated",
+        "qty": 6
+        },
+        {
+        "category": "beverage",
+        "item": "Water",
+        "brand": "Switch",
+        "type": "Grapefruit Sparkling Water",
+        "qty": 8
+        },
+        {
+        "category": "alcohol",
+        "item": "Vodka",
+        "brand": "Flamingo",
+        "type": "L'Orange",
+        "qty": 1
+        }
+        ]
+
+const container = document.getElementById('createDiv');
+
+list.forEach((result, idx) => {
+  // Create card element
+  const card = document.createElement('div');
+  card.classList = 'card-body';
+
+  // Construct card content
+  const content = `
+        <div class="container">
+            <div class="row">
+              
+                <div class="card">
+                    <div class="quantity"> QTY: ${result.qty}</div>
+                    <div class="card-header">
+                        <p><b>${result.item}</b></p>
+                        <hr class="solid">
+                        <div class="subContent">
+                            <p>${result.brand} ${result.type}</p>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p><b>${result.category}</b></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        `;
+
+  // Append newyly created card element to the container
+  container.innerHTML += content;
+})
+
+
+</script>
+</body>
+</html>
